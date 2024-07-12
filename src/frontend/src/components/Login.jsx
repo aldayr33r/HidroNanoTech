@@ -25,8 +25,8 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <button onClick={handleLogin}>Login with Internet Identity</button>
+    <div >
+      <button onClick={handleLogin}>Login con Internet Identity</button>
     </div>
   );
 };

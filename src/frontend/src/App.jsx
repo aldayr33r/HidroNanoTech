@@ -21,7 +21,7 @@ const App = () => {
     <div>
       {identity ? (
         <>
-          <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar bg="dark" variant="dark" expand="lg" className='mb-3'>
             <Navbar.Brand href="#" className="ml-3">HidroNanoTech</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
