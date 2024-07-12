@@ -18,6 +18,8 @@
     ],
     "dependencies": {
         "@dfinity/agent": "^1.4.0",
-        "@dfinity/auth-client": "^1.4.0"
+        "@dfinity/auth-client": "^1.4.0",
+        "bootstrap": "^5.3.3",
+        "react-bootstrap": "^2.10.4"
     }
 }

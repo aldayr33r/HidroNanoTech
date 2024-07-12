@@ -1,21 +1,39 @@
-// src/App.js
 import React, { useState } from 'react';
 import Login from './components/Login';
+import AboutUs from './components/AboutUs';
+import Catalog from './components/Catalog';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav } from 'react-bootstrap';
 
 const App = () => {
   const [identity, setIdentity] = useState(null);
+  const [view, setView] = useState('about');
 
   const handleLogin = (identity) => {
     setIdentity(identity);
   };
 
+  const handleNavClick = (newView) => {
+    setView(newView);
+  };
+
   return (
     <div>
       {identity ? (
-        <div>
-          <h1>Welcome, you are logged in!</h1>
-          {/* Puedes utilizar la identidad del usuario para realizar acciones autenticadas */}
-        </div>
+        <>
+          <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar.Brand href="#" className="ml-3">HidroNanoTech</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto ml-3">
+                <Nav.Link onClick={() => handleNavClick('about')}>Sobre Nosotros</Nav.Link>
+                <Nav.Link onClick={() => handleNavClick('catalog')}>Catálogo</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+          {view === 'about' && <AboutUs />}
+          {view === 'catalog' && <Catalog />}
+        </>
       ) : (
         <Login onLogin={handleLogin} />
       )}
@@ -24,3 +42,4 @@ const App = () => {
 };
 
 export default App;
+
