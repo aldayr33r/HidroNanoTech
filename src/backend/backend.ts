@@ -6,32 +6,25 @@ import {
 } from 'azle/canisters/management';
 
 
+
 export default Server(
     () => {
         const app = express();
         app.use(express.json());
 
-        let phonebook = {
-            'Alice': { 'phone': '123-456-789', 'added': new Date() }
-        };
+        
 
-        app.get('/contacts', (_req, res) => {
-            res.json(phonebook);
-        });
+        let productos = [
+            { id: 1, nombre: 'Agua Potable', porcentaje: '99.9 %', sugerencias:["Uso doméstico","Suministro de agua potable en comunidades rurales y urbanas"] , precio:"$0.07 por litro" },
+            { id: 2, nombre: 'Agua De Uso Industrial', porcentaje: '90 %', sugerencias:'["Procesos de manufactura","Refrigeración y calderas","Limpieza y lavado industrial"]' , precio:"$0.05 por litro" },
+            { id: 3, nombre: 'Agua De Riego Agrícola', porcentaje: '90 %', sugerencias:'["Riego de cultivos","Hidroponía y acuaponía","Cría de ganado y aves"]' , precio:"$0.07 por litro"  },
+            { id: 4, nombre: 'Agua De Uso Recreativo', porcentaje: '95 %', sugerencias:'["Llenado de piscinas y parques acuáticos","Fuentes y estanques ornamentales"]' , precio:"$0.07 por litro"  },
+            { id: 5, nombre: 'Aguas Grises', porcentaje: '70 %', sugerencias:'["Riego de parques","Descarga de inodoros"]' , precio:"$0.07 por litro"  }
+        ];
+        let carrito =[
+            {}
+        ]
 
-        app.post('/contacts/add', (req, res) => {
-            if (Object.keys(phonebook).includes(req.body.name)) {
-                res.json({ error: 'Name already exists' });
-            } else {
-                const contact = { [req.body.name]: { phone: req.body.phone, added: new Date() } };
-                phonebook = { ...phonebook, ...contact };
-                res.json({ status: 'Ok' });
-            }
-        });
-
-        app.get('/greet', (req, res) => {
-            res.json({ greeting: `Hello, ${req.query.name}` });
-        });
 
         app.post('/price-oracle', async (req, res) => {
             ic.setOutgoingHttpOptions({
@@ -41,22 +34,30 @@ export default Server(
             });
 
             const date = '2024-04-01';
-            const response = await (await fetch(`https://api.coinbase.com/v2/prices/${req.body.pair}/spot?date=${date}`)).json();
-            res.json(response);
+            const response = await fetch(`https://api.coinbase.com/v2/prices/${req.body.pair}/spot?date=${date}`)
+                .then(res => res.json())
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    res.status(500).json({ error: 'Failed to fetch price' });
+                });
+
+            if (response) {
+                res.json(response);
+            }
+        });
+
+        app.get('/productos', (req, res) => {
+            res.json(productos);
         });
 
         app.use(express.static('/dist'));
-        return app.listen();
+        return app.listen(3000); // Deberías especificar un puerto
     },
     {
-        // The transformation function for the HTTP outcall responses.
-        // Required to reach consensus among different results the nodes might get.
-        // Only if they all get the same response, the result is returned, so make sure
-        // your HTTP requests are idempotent and don't depend e.g. on the time.
         transform: query([HttpTransformArgs], HttpResponse, (args) => {
             return {
                 ...args.response,
-                headers: []
+                headers: [] // Aquí puedes ajustar los headers según tus necesidades
             };
         })
     }
