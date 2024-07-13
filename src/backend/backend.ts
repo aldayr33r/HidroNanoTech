@@ -8,9 +8,9 @@ export default Server(
         app.use(express.json());
 
         let productos = [
-            { id: 1, nombre: 'Agua juan', porcentaje: '99.9 %', sugerencias: ["Uso doméstico", "Suministro de agua potable en comunidades rurales y urbanas"], precio: "$0.07 por litro" },
-            { id: 2, nombre: 'Agua Sabor Fernanda', porcentaje: '90 %', sugerencias: ["Procesos de manufactura", "Refrigeración y calderas", "Limpieza y lavado industrial"], precio: "$0.05 por litro" },
-            { id: 3, nombre: 'Agua sabor Marys', porcentaje: '90 %', sugerencias: ["Riego de cultivos", "Hidroponía y acuaponía", "Cría de ganado y aves"], precio: "$0.07 por litro" },
+            { id: 1, nombre: 'Agua Potable', porcentaje: '99.9 %', sugerencias: ["Uso doméstico", "Suministro de agua potable en comunidades rurales y urbanas"], precio: "$0.07 por litro" },
+            { id: 2, nombre: 'Agua De Uso Industrial', porcentaje: '90 %', sugerencias: ["Procesos de manufactura", "Refrigeración y calderas", "Limpieza y lavado industrial"], precio: "$0.05 por litro" },
+            { id: 3, nombre: 'Agua De Uso Agrícola', porcentaje: '90 %', sugerencias: ["Riego de cultivos", "Hidroponía y acuaponía", "Cría de ganado y aves"], precio: "$0.07 por litro" },
             { id: 4, nombre: 'Agua De Uso Recreativo', porcentaje: '95 %', sugerencias: ["Llenado de piscinas y parques acuáticos", "Fuentes y estanques ornamentales"], precio: "$0.07 por litro" },
             { id: 5, nombre: 'Aguas Grises', porcentaje: '70 %', sugerencias: ["Riego de parques", "Descarga de inodoros"], precio: "$0.07 por litro" }
         ];

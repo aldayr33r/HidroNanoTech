@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from '@react-spring/web';
-import logo from '../../public/img/logo-black-removebg-preview (1).png'; 
+import logo from '../../public/img/logo_black.png'; 
 
 const LogoAnimation = () => {
   const styles = useSpring({

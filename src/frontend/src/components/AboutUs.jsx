@@ -34,13 +34,13 @@ const AboutUs = () => {
         
         <Row className="justify-content-center">
           <Col md={4}>
-            <img src="../../public/img/nanop2.jpeg" alt="Image 1" className="img-fluid mb-3 custom-image-size3" />
+            <img src="/img/nanop2.jpeg" alt="Image 1" className="img-fluid mb-3 custom-image-size3" />
           </Col>
           <Col md={4}>
-            <img src="../../public/img/nanop1.jpeg" alt="Image 2" className="img-fluid mb-3" />
+            <img src="/img/nanop1.jpeg" alt="Image 2" className="img-fluid mb-3" />
           </Col>
           <Col md={4}>
-            <img src="../../public/img/Nanop.jpeg" alt="Image 3" className="img-fluid mb-3 " />
+            <img src="/img/Nanop.jpeg" alt="Image 3" className="img-fluid mb-3 " />
           </Col>
         </Row>
 
@@ -84,13 +84,13 @@ const AboutUs = () => {
         </Row>
         <Row className="justify-content-center">
           <Col md={4}>
-            <img src="../../public/img/logo-black-removebg-preview (1).png" alt="Image 1" className="img-fluid mb-3 custom-image-size" />
+            <img src=">/img/logo-black-removebg-preview (1).png" alt="Image 1" className="img-fluid mb-3 custom-image-size" />
           </Col>
           <Col md={4}>
-            <img src="../../public/img/Logo1.jpeg" alt="Image 2" className="img-fluid mb-3" />
+            <img src=">/img/Logo1.jpeg" alt="Image 2" className="img-fluid mb-3" />
           </Col>
           <Col md={4}>
-            <img src="../../public/img/Logo2.png" alt="Image 3" className="img-fluid mb-3 custom-image-size1" />
+            <img src="/img/Logo2.png" alt="Image 3" className="img-fluid mb-3 custom-image-size1" />
           </Col>
         </Row>
       </Container>
