@@ -3,7 +3,6 @@ import Login from './components/Login';
 import AboutUs from './components/AboutUs';
 import Catalog from './components/Catalog';
 import Carrito from './components/Carrito';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -31,12 +30,12 @@ const App = () => {
                 <Nav.Link onClick={() => handleNavClick('about')}>Sobre Nosotros</Nav.Link>
                 <Nav.Link onClick={() => handleNavClick('catalog')}>Catálogo</Nav.Link>
                 <Nav.Link onClick={() => handleNavClick('carrito')}>Carrito</Nav.Link>
-
               </Nav>
             </Navbar.Collapse>
           </Navbar>
           {view === 'about' && <AboutUs />}
           {view === 'catalog' && <Catalog />}
+          {view === 'carrito' && <Carrito identity={identity} />}
         </>
       ) : (
         <Login onLogin={handleLogin} />
@@ -46,4 +45,3 @@ const App = () => {
 };
 
 export default App;
-

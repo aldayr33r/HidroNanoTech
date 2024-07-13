@@ -1,9 +1,6 @@
 import express from 'express';
 import { Server, ic, query } from 'azle';
-import {
-    HttpResponse,
-    HttpTransformArgs,
-} from 'azle/canisters/management';
+import { HttpResponse, HttpTransformArgs } from 'azle/canisters/management';
 
 export default Server(
     () => {
@@ -17,32 +14,56 @@ export default Server(
             { id: 4, nombre: 'Agua De Uso Recreativo', porcentaje: '95 %', sugerencias: ["Llenado de piscinas y parques acuáticos", "Fuentes y estanques ornamentales"], precio: "$0.07 por litro" },
             { id: 5, nombre: 'Aguas Grises', porcentaje: '70 %', sugerencias: ["Riego de parques", "Descarga de inodoros"], precio: "$0.07 por litro" }
         ];
-        
-        let carrito =[
-            {}
-        ]
-        app.post('/price-oracle', async (req, res) => {
-            ic.setOutgoingHttpOptions({
-                maxResponseBytes: 20_000n,
-                cycles: 500_000_000_000n, // HTTP outcalls cost cycles. Unused cycles are returned.
-                transformMethodName: 'transform'
-            });
 
-            const date = '2024-04-01';
-            const response = await fetch(`https://api.coinbase.com/v2/prices/${req.body.pair}/spot?date=${date}`)
-                .then(res => res.json())
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                    res.status(500).json({ error: 'Failed to fetch price' });
-                });
-
-            if (response) {
-                res.json(response);
-            }
-        });
+        let carritos = {}; // Usar un objeto para almacenar carritos por identity
 
         app.get('/productos', (req, res) => {
             res.json(productos);
+        });
+
+        app.get('/carrito', (req, res) => {
+            const { identity } = req.headers;
+            if (carritos[identity]) {
+                res.json(carritos[identity]);
+            } else {
+                res.json([]);
+            }
+        });
+
+        app.post('/carrito/agregar', (req, res) => {
+            const { productoId, cantidad } = req.body;
+            const { identity } = req.headers;
+
+            if (!carritos[identity]) {
+                carritos[identity] = [];
+            }
+
+            const carrito = carritos[identity];
+            const producto = productos.find(p => p.id === productoId);
+
+            if (producto) {
+                const itemExistente = carrito.find(item => item.id === productoId);
+                if (itemExistente) {
+                    itemExistente.cantidad += cantidad;
+                } else {
+                    carrito.push({ ...producto, cantidad });
+                }
+                res.json(carrito);
+            } else {
+                res.status(404).json({ error: 'Producto no encontrado' });
+            }
+        });
+
+        app.post('/carrito/comprar', (req, res) => {
+            const { identity } = req.headers;
+
+            if (carritos[identity]) {
+                // Aquí podrías agregar lógica para procesar el pedido, como reducir inventario, registrar la compra, etc.
+                carritos[identity] = [];
+                res.json({ mensaje: 'Compra realizada con éxito' });
+            } else {
+                res.status(404).json({ error: 'Carrito vacío o no encontrado' });
+            }
         });
 
         app.use(express.static('/dist'));
