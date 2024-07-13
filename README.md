@@ -7,7 +7,7 @@ It includes a frontend built with Vite and React, and a backend written in JS/TS
 
 In Gitpod 
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](gitpod.io/#https://github.com/aldayr33r/HidroNanoTech)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/new/#https://github.com/aldayr33r/HidroNanoTech)
 
 ## 🚀 Develop
 
