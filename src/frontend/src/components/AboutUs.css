@@ -23,3 +23,16 @@
   margin-bottom: 20px;
   text-align: justify;
 }
+.custom-image-size {
+  width: 150px; /* Ajusta el tamaño según tus necesidades */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.custom-image-size1 {
+  padding-top: 30px;
+  width: 135px; /* Ajusta el tamaño según tus necesidades */
+  height: 105px; /* Mantiene la proporción de la imagen */
+}
+.custom-image-size3{
+  width: 175px; /* Ajusta el tamaño según tus necesidades */
+}

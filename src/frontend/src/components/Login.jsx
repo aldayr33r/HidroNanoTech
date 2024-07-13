@@ -21,11 +21,13 @@ const Login = ({ onLogin }) => {
   }, [onLogin]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      handleLogin();
-    }, 4000);
+    if (authClient) {
+      const timer = setTimeout(() => {
+        handleLogin();
+      }, 4000);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, [authClient]);
 
   const handleLogin = async () => {
