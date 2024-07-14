@@ -84,10 +84,10 @@ const AboutUs = () => {
         </Row>
         <Row className="justify-content-center">
           <Col md={4}>
-            <img src=">/img/logo-black-removebg-preview (1).png" alt="Image 1" className="img-fluid mb-3 custom-image-size" />
+            <img src="/img/logo_black.png" alt="Image 1" className="img-fluid mb-3 custom-image-size" />
           </Col>
           <Col md={4}>
-            <img src=">/img/Logo1.jpeg" alt="Image 2" className="img-fluid mb-3" />
+            <img src="/img/Logo1.jpeg" alt="Image 2" className="img-fluid mb-3" />
           </Col>
           <Col md={4}>
             <img src="/img/Logo2.png" alt="Image 3" className="img-fluid mb-3 custom-image-size1" />

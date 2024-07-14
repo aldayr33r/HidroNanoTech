@@ -44,7 +44,7 @@ const Catalog = () => {
         {products.map(product => (
           <Col key={product.id} md={4} className="mb-4">
             <Card>
-              <Card.Img variant="top" src="https://source.unsplash.com/random/300x200" />
+              <Card.Img variant="top" src={product.src} />
               <Card.Body>
                 <Card.Title>{product.nombre}</Card.Title>
                 <Card.Text><strong>Pureza:</strong> {product.porcentaje}</Card.Text>

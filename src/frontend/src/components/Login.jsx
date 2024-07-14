@@ -47,7 +47,7 @@ const Login = ({ onLogin }) => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'white' }}>
       <LogoAnimation />
-      {/* Puedes agregar un mensaje o indicador de carga aquí si lo deseas */}
+      {/* Agregar un mensaje o indicador de carga aquí si lo deseas */}
     </div>
   );
 };
